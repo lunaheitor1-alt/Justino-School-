@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="login">
+
+        <div class="logo" aria-label="Logo JM">
+            <img src="logo-jm-transparente.png" alt="Logo JM">
+        </div>
+
+        <h1 id="titulo">
+            Login
+        </h1>
+
+        <p class="subtitulo">
+            Acesse sua conta para continuar
+        </p>
+
+
+        <!-- LOGIN -->
+        <div id="areaLogin">
+
+            <div class="campo">
+
+                <label for="emailLogin">
+                    E-mail
+                </label>
+
+                <input
+                    type="email"
+                    id="emailLogin"
+                    placeholder="Digite seu email"
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label for="senhaLogin">
+                    Senha
+                </label>
+
+                <input
+                    type="password"
+                    id="senhaLogin"
+                    placeholder="Digite sua senha"
+                >
+
+            </div>
+
+
+            <button
+                class="btn-principal"
+                type="button"
+                onclick="entrar()"
+            >
+                Entrar
+            </button>
+
+
+            <button
+                class="btn-secundario"
+                type="button"
+                onclick="mostrarCadastro()"
+            >
+                Criar uma conta
+            </button>
+
+        </div>
+
+
+
+        <!-- CADASTRO -->
+        <div
+            id="areaCadastro"
+            style="display: none;"
+        >
+
+            <div class="campo">
+
+                <label for="emailCadastro">
+                    E-mail
+                </label>
+
+                <input
+                    type="email"
+                    id="emailCadastro"
+                    placeholder="Crie seu email"
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label for="senhaCadastro">
+                    Senha
+                </label>
+
+                <input
+                    type="password"
+                    id="senhaCadastro"
+                    placeholder="Crie sua senha"
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label for="confirmarSenha">
+                    Confirmar senha
+                </label>
+
+                <input
+                    type="password"
+                    id="confirmarSenha"
+                    placeholder="Confirme sua senha"
+                >
+
+            </div>
+
+
+            <button
+                class="btn-principal"
+                type="button"
+                onclick="criarConta()"
+            >
+                Criar conta
+            </button>
+
+
+            <button
+                class="btn-secundario"
+                type="button"
+                onclick="voltarLogin()"
+            >
+                Voltar para login
+            </button>
+
+        </div>
+
+
+        <p id="mensagem"></p>
+
+
+        <div class="rodape-login">
+            PEI Justino Marcons Rangel
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+  </html>
+  
