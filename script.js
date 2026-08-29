@@ -1,217 +1,88 @@
-function mostrarCadastro() {
+/*
+======================================
+PROTEÇÃO DA PÁGINA
+======================================
+*/
 
-            document.getElementById("areaLogin").style.display =
-                "none";
+const usuarioLogado =
+    localStorage.getItem("usuarioLogado");
 
-            document.getElementById("areaCadastro").style.display =
-                "block";
+if (usuarioLogado !== "true") {
+    window.location.replace("index.htm");
+}
 
-            document.getElementById("titulo").innerText =
-                "Criar conta";
 
-            document.querySelector(".subtitulo").innerText =
-                "Preencha os dados para criar sua conta";
+/*
+======================================
+MODO NOTURNO
+======================================
+*/
 
-            document.getElementById("mensagem").innerText =
-                "";
-        }
+const modoNoturno =
+    localStorage.getItem("modoNoturno") === "true";
 
+const btnTema =
+    document.getElementById("btnTema");
 
-        function voltarLogin() {
 
-            document.getElementById("areaLogin").style.display =
-                "block";
+function atualizarBotaoTema() {
 
-            document.getElementById("areaCadastro").style.display =
-                "none";
+    if (document.body.classList.contains("dark-mode")) {
 
-            document.getElementById("titulo").innerText =
-                "Login";
+        btnTema.innerHTML = "☀️ Modo claro";
 
-            document.querySelector(".subtitulo").innerText =
-                "Acesse sua conta para continuar";
+        btnTema.setAttribute(
+            "aria-label",
+            "Desativar modo noturno"
+        );
 
-            document.getElementById("mensagem").innerText =
-                "";
-        }
+    } else {
 
+        btnTema.innerHTML = "🌙 Modo noturno";
 
-        function criarConta() {
+        btnTema.setAttribute(
+            "aria-label",
+            "Ativar modo noturno"
+        );
+    }
+}
 
-            let email =
-                document.getElementById("emailCadastro").value.trim();
 
-            let senha =
-                document.getElementById("senhaCadastro").value;
+function alternarModo() {
 
-            let confirmar =
-                document.getElementById("confirmarSenha").value;
+    const ativado =
+        document.body.classList.toggle("dark-mode");
 
+    localStorage.setItem(
+        "modoNoturno",
+        ativado ? "true" : "false"
+    );
 
-            if (
-                email === "" ||
-                senha === "" ||
-                confirmar === ""
-            ) {
+    atualizarBotaoTema();
+}
 
-                document.getElementById("mensagem").innerText =
-                    "Preencha todos os campos.";
 
-                return;
-            }
+if (modoNoturno) {
+    document.body.classList.add("dark-mode");
+}
 
+atualizarBotaoTema();
 
-            if (senha !== confirmar) {
 
-                document.getElementById("mensagem").innerText =
-                    "As senhas não são iguais.";
+/*
+======================================
+SAIR DA CONTA
+======================================
+*/
 
-                return;
-            }
+function sair() {
 
+    // Remove somente a sessão.
+    // A conta continua cadastrada.
 
-            let contaExistente =
-                localStorage.getItem("conta");
+    localStorage.removeItem("usuarioLogado");
 
+    // Volta para o arquivo correto.
 
-            if (contaExistente !== null) {
-
-                let conta =
-                    JSON.parse(contaExistente);
-
-                if (conta.email === email) {
-
-                    document.getElementById("mensagem").innerText =
-                        "Esse email já possui uma conta.";
-
-                    return;
-                }
-            }
-
-
-            let conta = {
-
-                email: email,
-                senha: senha
-
-            };
-
-
-            localStorage.setItem(
-                "conta",
-                JSON.stringify(conta)
-            );
-
-
-            document.getElementById("mensagem").style.color =
-                "#16a34a";
-
-            document.getElementById("mensagem").innerText =
-                "Conta criada com sucesso!";
-
-
-            document.getElementById("emailCadastro").value =
-                "";
-
-            document.getElementById("senhaCadastro").value =
-                "";
-
-            document.getElementById("confirmarSenha").value =
-                "";
-
-
-            setTimeout(function () {
-
-                document.getElementById("mensagem").style.color =
-                    "#dc2626";
-
-                voltarLogin();
-
-            }, 1000);
-        }
-
-
-        function entrar() {
-
-            let email =
-                document.getElementById("emailLogin").value.trim();
-
-            let senha =
-                document.getElementById("senhaLogin").value;
-
-
-            if (email === "" || senha === "") {
-
-                document.getElementById("mensagem").innerText =
-                    "Digite seu email e sua senha.";
-
-                return;
-            }
-
-
-            let contaSalva =
-                localStorage.getItem("conta");
-
-
-            if (contaSalva === null) {
-
-                document.getElementById("mensagem").innerText =
-                    "Nenhuma conta cadastrada.";
-
-                return;
-            }
-
-
-            let conta =
-                JSON.parse(contaSalva);
-
-
-            if (
-                email === conta.email &&
-                senha === conta.senha
-            ) {
-
-                document.getElementById("mensagem").style.color =
-                    "#16a34a";
-
-                document.getElementById("mensagem").innerText =
-                    "Login bem-sucedido!";
-
-
-                localStorage.setItem(
-                    "usuarioLogado",
-                    "true"
-                );
-
-
-                setTimeout(function () {
-
-                    window.location.href =
-                        "escola.html";
-
-                }, 500);
-
-
-            } else {
-
-                document.getElementById("mensagem").style.color =
-                    "#dc2626";
-
-                document.getElementById("mensagem").innerText =
-                    "Email ou senha incorreto.";
-            }
-        }
-
-
-        document
-            .getElementById("senhaLogin")
-            .addEventListener(
-                "keydown",
-                function (event) {
-
-                    if (event.key === "Enter") {
-                        entrar();
-                    }
-
-                }
-            );
+    window.location.replace("index.htm");
+}
