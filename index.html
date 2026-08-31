@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Login</title>
-    <link rel="stylesheet" href="login.css">
-</head>
-<body>
-<div class="login">
 
-        <div class="logo" aria-label="Logo JM">
-            <img src="./logo-jm-transparente.png" alt="Logo JM">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sistema de Login</title>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <main class="login">
+
+        <div class="logo">
+            <img
+                src="./logo-jm-transparente.png"
+                alt="Logo JM"
+            >
         </div>
 
-        <h1 id="titulo">
-            Login
-        </h1>
+        <h1 id="titulo">Login</h1>
 
         <p class="subtitulo">
             Acesse sua conta para continuar
         </p>
-
 
         <!-- LOGIN -->
         <div id="areaLogin">
@@ -35,10 +44,10 @@
                     type="email"
                     id="emailLogin"
                     placeholder="Digite seu email"
+                    autocomplete="email"
                 >
 
             </div>
-
 
             <div class="campo">
 
@@ -50,10 +59,10 @@
                     type="password"
                     id="senhaLogin"
                     placeholder="Digite sua senha"
+                    autocomplete="current-password"
                 >
 
             </div>
-
 
             <button
                 class="btn-principal"
@@ -62,7 +71,6 @@
             >
                 Entrar
             </button>
-
 
             <button
                 class="btn-secundario"
@@ -73,8 +81,6 @@
             </button>
 
         </div>
-
-
 
         <!-- CADASTRO -->
         <div
@@ -92,10 +98,10 @@
                     type="email"
                     id="emailCadastro"
                     placeholder="Crie seu email"
+                    autocomplete="email"
                 >
 
             </div>
-
 
             <div class="campo">
 
@@ -107,10 +113,10 @@
                     type="password"
                     id="senhaCadastro"
                     placeholder="Crie sua senha"
+                    autocomplete="new-password"
                 >
 
             </div>
-
 
             <div class="campo">
 
@@ -122,10 +128,10 @@
                     type="password"
                     id="confirmarSenha"
                     placeholder="Confirme sua senha"
+                    autocomplete="new-password"
                 >
 
             </div>
-
 
             <button
                 class="btn-principal"
@@ -134,7 +140,6 @@
             >
                 Criar conta
             </button>
-
 
             <button
                 class="btn-secundario"
@@ -146,17 +151,16 @@
 
         </div>
 
-
         <p id="mensagem"></p>
 
-
-        <div class="rodape-login">
+        <footer class="rodape-login">
             PEI Justino Marcons Rangel
-        </div>
+        </footer>
 
-    </div>
+    </main>
 
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
+
 </body>
-  </html>
-  
+
+</html>
