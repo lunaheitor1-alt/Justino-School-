@@ -1,294 +1,288 @@
-// ================================
-// SISTEMA DE LOGIN - PEI JUSTINO
-// ================================
+// ==========================================
+// LOGIN - PEI JUSTINO MARCONS RANGEL
+// ==========================================
 
-// Mostrar mensagem na tela
-function mostrarMensagem(texto, tipo = "erro") {
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Elementos
+    const areaLogin = document.getElementById("areaLogin");
+    const areaCadastro = document.getElementById("areaCadastro");
+
+    const titulo = document.getElementById("titulo");
+    const subtitulo = document.querySelector(".subtitulo");
     const mensagem = document.getElementById("mensagem");
 
-    mensagem.textContent = texto;
+    const emailLogin = document.getElementById("emailLogin");
+    const senhaLogin = document.getElementById("senhaLogin");
 
-    if (tipo === "sucesso") {
-        mensagem.style.color = "#16a34a";
-    } else {
-        mensagem.style.color = "#dc2626";
-    }
-}
+    const emailCadastro = document.getElementById("emailCadastro");
+    const senhaCadastro = document.getElementById("senhaCadastro");
+    const confirmarSenha = document.getElementById("confirmarSenha");
 
 
-// ================================
-// MOSTRAR CADASTRO
-// ================================
+    // ==========================================
+    // MOSTRAR MENSAGEM
+    // ==========================================
 
-function mostrarCadastro() {
+    function mostrarMensagem(texto, sucesso = false) {
 
-    document.getElementById("areaLogin").style.display = "none";
-    document.getElementById("areaCadastro").style.display = "block";
+        mensagem.textContent = texto;
 
-    document.getElementById("titulo").textContent = "Criar conta";
-
-    document.querySelector(".subtitulo").textContent =
-        "Cadastre-se para continuar";
-
-    mostrarMensagem("");
-}
-
-
-// ================================
-// VOLTAR PARA LOGIN
-// ================================
-
-function voltarLogin() {
-
-    document.getElementById("areaCadastro").style.display = "none";
-    document.getElementById("areaLogin").style.display = "block";
-
-    document.getElementById("titulo").textContent = "Login";
-
-    document.querySelector(".subtitulo").textContent =
-        "Acesse sua conta para continuar";
-
-    mostrarMensagem("");
-}
-
-
-// ================================
-// CRIAR CONTA
-// ================================
-
-function criarConta() {
-
-    const email = document
-        .getElementById("emailCadastro")
-        .value
-        .trim();
-
-    const senha = document
-        .getElementById("senhaCadastro")
-        .value;
-
-    const confirmarSenha = document
-        .getElementById("confirmarSenha")
-        .value;
-
-
-    // Verificar campos vazios
-    if (!email || !senha || !confirmarSenha) {
-
-        mostrarMensagem(
-            "Preencha todos os campos."
-        );
-
-        return;
+        mensagem.style.color = sucesso
+            ? "#16a34a"
+            : "#dc2626";
     }
 
 
-    // Verificar e-mail
-    if (!email.includes("@")) {
+    // ==========================================
+    // MOSTRAR CADASTRO
+    // ==========================================
 
-        mostrarMensagem(
-            "Digite um e-mail válido."
-        );
+    window.mostrarCadastro = function () {
 
-        return;
-    }
+        areaLogin.style.display = "none";
+        areaCadastro.style.display = "block";
 
+        titulo.textContent = "Criar conta";
 
-    // Verificar tamanho da senha
-    if (senha.length < 6) {
+        subtitulo.textContent =
+            "Cadastre-se para continuar";
 
-        mostrarMensagem(
-            "A senha precisa ter pelo menos 6 caracteres."
-        );
+        mostrarMensagem("");
 
-        return;
-    }
+        emailCadastro.focus();
+    };
 
 
-    // Confirmar senha
-    if (senha !== confirmarSenha) {
+    // ==========================================
+    // VOLTAR PARA LOGIN
+    // ==========================================
 
-        mostrarMensagem(
-            "As senhas não coincidem."
-        );
+    window.voltarLogin = function () {
 
-        return;
-    }
+        areaCadastro.style.display = "none";
+        areaLogin.style.display = "block";
+
+        titulo.textContent = "Login";
+
+        subtitulo.textContent =
+            "Acesse sua conta para continuar";
+
+        mostrarMensagem("");
+
+        emailLogin.focus();
+    };
 
 
-    // Verificar se já existe uma conta
-    const contaExistente =
-        localStorage.getItem("contaJustino");
+    // ==========================================
+    // CRIAR CONTA
+    // ==========================================
 
-    if (contaExistente) {
+    window.criarConta = function () {
 
-        const conta =
-            JSON.parse(contaExistente);
+        const email = emailCadastro.value.trim();
+        const senha = senhaCadastro.value;
+        const confirmar = confirmarSenha.value;
 
-        if (conta.email === email) {
+
+        if (email === "" || senha === "" || confirmar === "") {
 
             mostrarMensagem(
-                "Este e-mail já está cadastrado."
+                "Preencha todos os campos."
             );
 
             return;
         }
-    }
 
 
-    // Criar conta
-    const novaConta = {
-        email: email,
-        senha: senha
-    };
+        if (!email.includes("@")) {
 
+            mostrarMensagem(
+                "Digite um e-mail válido."
+            );
 
-    localStorage.setItem(
-        "contaJustino",
-        JSON.stringify(novaConta)
-    );
-
-
-    mostrarMensagem(
-        "Conta criada com sucesso!",
-        "sucesso"
-    );
-
-
-    // Limpar campos
-    document.getElementById("emailCadastro").value = "";
-    document.getElementById("senhaCadastro").value = "";
-    document.getElementById("confirmarSenha").value = "";
-
-
-    // Voltar para login depois de um pequeno intervalo
-    setTimeout(() => {
-
-        voltarLogin();
-
-        mostrarMensagem(
-            "Agora você pode entrar na sua conta.",
-            "sucesso"
-        );
-
-    }, 1200);
-}
-
-
-// ================================
-// ENTRAR
-// ================================
-
-function entrar() {
-
-    const email = document
-        .getElementById("emailLogin")
-        .value
-        .trim();
-
-    const senha = document
-        .getElementById("senhaLogin")
-        .value;
-
-
-    // Verificar campos
-    if (!email || !senha) {
-
-        mostrarMensagem(
-            "Digite seu e-mail e sua senha."
-        );
-
-        return;
-    }
-
-
-    // Procurar conta
-    const dadosConta =
-        localStorage.getItem("contaJustino");
-
-
-    if (!dadosConta) {
-
-        mostrarMensagem(
-            "Nenhuma conta cadastrada. Crie uma conta primeiro."
-        );
-
-        return;
-    }
-
-
-    const conta =
-        JSON.parse(dadosConta);
-
-
-    // Verificar login
-    if (
-        email === conta.email &&
-        senha === conta.senha
-    ) {
-
-        mostrarMensagem(
-            "Login realizado com sucesso!",
-            "sucesso"
-        );
-
-
-        // Salvar estado de login
-        localStorage.setItem(
-            "usuarioLogado",
-            "true"
-        );
-
-
-        // Redirecionar para a página principal
-        setTimeout(() => {
-
-            window.location.href = "escola.html";
-
-        }, 1000);
-
-        return;
-    }
-
-
-    // Login incorreto
-    mostrarMensagem(
-        "E-mail ou senha incorretos."
-    );
-}
-
-
-// ================================
-// PERMITIR ENTER PARA ENTRAR
-// ================================
-
-document.addEventListener(
-    "keydown",
-    function (evento) {
-
-        if (evento.key !== "Enter") {
             return;
         }
 
-        const areaLogin =
-            document.getElementById("areaLogin");
 
-        const areaCadastro =
-            document.getElementById("areaCadastro");
+        if (senha.length < 6) {
+
+            mostrarMensagem(
+                "A senha precisa ter pelo menos 6 caracteres."
+            );
+
+            return;
+        }
+
+
+        if (senha !== confirmar) {
+
+            mostrarMensagem(
+                "As senhas não são iguais."
+            );
+
+            return;
+        }
+
+
+        // Salvar conta
+        const conta = {
+            email: email,
+            senha: senha
+        };
+
+        localStorage.setItem(
+            "contaJustino",
+            JSON.stringify(conta)
+        );
+
+
+        mostrarMensagem(
+            "Conta criada com sucesso!",
+            true
+        );
+
+
+        // Limpar cadastro
+        emailCadastro.value = "";
+        senhaCadastro.value = "";
+        confirmarSenha.value = "";
+
+
+        // Voltar para login
+        setTimeout(function () {
+
+            voltarLogin();
+
+            emailLogin.value = email;
+
+            mostrarMensagem(
+                "Agora digite sua senha para entrar.",
+                true
+            );
+
+            senhaLogin.focus();
+
+        }, 1000);
+    };
+
+
+    // ==========================================
+    // ENTRAR
+    // ==========================================
+
+    window.entrar = function () {
+
+        const email = emailLogin.value.trim();
+        const senha = senhaLogin.value;
+
+
+        if (email === "" || senha === "") {
+
+            mostrarMensagem(
+                "Digite seu e-mail e sua senha."
+            );
+
+            return;
+        }
+
+
+        const dados =
+            localStorage.getItem("contaJustino");
+
+
+        if (!dados) {
+
+            mostrarMensagem(
+                "Você ainda não possui uma conta."
+            );
+
+            return;
+        }
+
+
+        const conta = JSON.parse(dados);
 
 
         if (
-            areaLogin.style.display !== "none" &&
-            areaCadastro.style.display === "none"
+            email === conta.email &&
+            senha === conta.senha
         ) {
 
-            entrar();
+            mostrarMensagem(
+                "Login realizado com sucesso!",
+                true
+            );
+
+
+            localStorage.setItem(
+                "usuarioLogado",
+                "true"
+            );
+
+
+            // Redirecionamento
+            setTimeout(function () {
+
+                window.location.href = "escola.html";
+
+            }, 800);
 
         } else {
 
-            criarConta();
+            mostrarMensagem(
+                "E-mail ou senha incorretos."
+            );
+        }
+    };
 
+
+    // ==========================================
+    // ENTER NOS CAMPOS
+    // ==========================================
+
+    emailLogin.addEventListener("keydown", function (evento) {
+
+        if (evento.key === "Enter") {
+            entrar();
         }
 
-    }
-);
+    });
+
+
+    senhaLogin.addEventListener("keydown", function (evento) {
+
+        if (evento.key === "Enter") {
+            entrar();
+        }
+
+    });
+
+
+    emailCadastro.addEventListener("keydown", function (evento) {
+
+        if (evento.key === "Enter") {
+            criarConta();
+        }
+
+    });
+
+
+    senhaCadastro.addEventListener("keydown", function (evento) {
+
+        if (evento.key === "Enter") {
+            criarConta();
+        }
+
+    });
+
+
+    confirmarSenha.addEventListener("keydown", function (evento) {
+
+        if (evento.key === "Enter") {
+            criarConta();
+        }
+
+    });
+
+});
