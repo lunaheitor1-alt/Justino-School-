@@ -7,9 +7,13 @@ PROTEÇÃO DA PÁGINA
 const usuarioLogado =
     localStorage.getItem("usuarioLogado");
 
+
 if (usuarioLogado !== "true") {
-    window.location.replace("index.html");
+
+    window.location.replace("index.htm");
+
 }
+
 
 
 /*
@@ -24,15 +28,11 @@ const modoNoturno =
 const btnTema =
     document.getElementById("btnTema");
 
-
 function atualizarBotaoTema() {
-
-    if (!btnTema) return;
 
     if (document.body.classList.contains("dark-mode")) {
 
         btnTema.innerHTML = "☀️ Modo claro";
-
         btnTema.setAttribute(
             "aria-label",
             "Desativar modo noturno"
@@ -41,14 +41,14 @@ function atualizarBotaoTema() {
     } else {
 
         btnTema.innerHTML = "🌙 Modo noturno";
-
         btnTema.setAttribute(
             "aria-label",
             "Ativar modo noturno"
         );
-    }
-}
 
+    }
+
+}
 
 function alternarModo() {
 
@@ -61,8 +61,8 @@ function alternarModo() {
     );
 
     atualizarBotaoTema();
-}
 
+}
 
 if (modoNoturno) {
     document.body.classList.add("dark-mode");
@@ -81,10 +81,11 @@ function sair() {
 
     // Remove somente a sessão.
     // A conta continua cadastrada.
-
     localStorage.removeItem("usuarioLogado");
 
-    // Volta para o login.
 
-    window.location.replace("index.html");
+    // Volta para o arquivo correto:
+    // index.htm
+    window.location.replace("index.htm");
+
 }
