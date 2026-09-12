@@ -8,7 +8,7 @@ const usuarioLogado =
     localStorage.getItem("usuarioLogado");
 
 if (usuarioLogado !== "true") {
-    window.location.replace("index.htm");
+    window.location.replace("index.html");
 }
 
 
@@ -26,6 +26,8 @@ const btnTema =
 
 
 function atualizarBotaoTema() {
+
+    if (!btnTema) return;
 
     if (document.body.classList.contains("dark-mode")) {
 
@@ -82,7 +84,7 @@ function sair() {
 
     localStorage.removeItem("usuarioLogado");
 
-    // Volta para o arquivo correto.
+    // Volta para o login.
 
-    window.location.replace("index.htm");
+    window.location.replace("index.html");
 }
