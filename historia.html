@@ -18,22 +18,26 @@
         <div class="container header-content">
 
             <div class="logo-area">
+
                 <div class="logo-icon">
-                    <img src="logo-jm-transparente.png"
-                         alt="Logo JM">
+                    <img
+                        src="logo-jm-transparente.png"
+                        alt="Logo JM"
+                    >
                 </div>
 
-                <div>
+                <div class="logo-text">
                     <h1>PEI Justino Marcons Rangel</h1>
                     <span>Educação • Conhecimento • Futuro</span>
                 </div>
+
             </div>
 
             <nav class="menu">
                 <a href="escola.html#inicio">Início</a>
                 <a href="escola.html#sobre">Sobre</a>
                 <a href="escola.html#projetos">Projetos</a>
-                <a href="historia.html">História</a>
+                <a href="historia.html" class="active">História</a>
                 <a href="escola.html#estrutura">Estrutura</a>
                 <a href="escola.html#contato">Contato</a>
             </nav>
@@ -42,7 +46,8 @@
                 class="btn-theme"
                 id="btnTema"
                 type="button"
-                onclick="alternarModo()">
+                onclick="alternarModo()"
+            >
                 🌙 Modo noturno
             </button>
 
@@ -56,224 +61,274 @@
 
 
     <!-- HERO -->
-    <section class="hero">
+    <main>
 
-        <div class="container hero-content">
+        <section class="hero">
 
-            <div class="hero-text">
+            <div class="hero-background"></div>
 
-                <span class="tag">
-                    Nossa história
-                </span>
+            <div class="container hero-content">
 
-                <h2>
-                    A história do
-                    Justino Marcons Rangel
-                </h2>
+                <div class="hero-text">
 
-                <p>
-                    Conheça um pouco da transformação
-                    da nossa escola através de registros
-                    de diferentes momentos.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ANTES -->
-    <section class="section">
-
-        <div class="container">
-
-            <div class="section-title">
-
-                <span>Antes</span>
-
-                <h2>
-                    Como era o Justino antes
-                </h2>
-
-                <p>
-                    Um registro de um momento anterior
-                    da escola.
-                </p>
-
-            </div>
-
-
-            <div class="history-card">
-
-                <div class="history-image">
-                    <img
-                        src="justino-antes.jpg"
-                        alt="PEI Justino Marcons Rangel antes"
-                    >
-                </div>
-
-                <div class="history-text">
-
-                    <span class="history-label">
-                        ANTES
+                    <span class="tag">
+                        NOSSA HISTÓRIA
                     </span>
 
-                    <h3>
-                        Um registro da nossa história
-                    </h3>
+                    <h2>
+                        Do passado ao presente:
+                        <strong>a história do Justino.</strong>
+                    </h2>
 
                     <p>
-                        Esta fotografia registra a aparência
-                        da escola em um período anterior,
-                        fazendo parte da memória do
-                        Justino Marcons Rangel.
+                        Conheça um pouco da transformação da
+                        PEI Justino Marcons Rangel através de
+                        registros de diferentes momentos.
+                    </p>
+
+                    <a href="#antes" class="hero-button">
+                        Conhecer a história ↓
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- INTRODUÇÃO -->
+        <section class="intro">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span>UM POUCO DA NOSSA HISTÓRIA</span>
+
+                    <h2>
+                        Uma escola que continua evoluindo
+                    </h2>
+
+                    <p>
+                        Cada imagem guarda um momento especial
+                        da trajetória da escola e ajuda a contar
+                        como o Justino chegou até os dias atuais.
                     </p>
 
                 </div>
 
             </div>
 
-        </div>
-
-    </section>
+        </section>
 
 
-    <!-- DEPOIS -->
-    <section class="section section-light">
+        <!-- ANTES -->
+        <section class="history-section" id="antes">
 
-        <div class="container">
+            <div class="container">
 
-            <div class="section-title">
+                <div class="history-grid">
 
-                <span>Depois</span>
+                    <div class="history-image">
 
-                <h2>
-                    Como está o Justino depois
-                </h2>
+                        <div class="image-label">
+                            ANTES
+                        </div>
 
-                <p>
-                    Um registro mais recente da escola.
-                </p>
+                        <img
+                            src="justino-antes.jpg"
+                            alt="PEI Justino Marcons Rangel em um período anterior"
+                        >
+
+                    </div>
+
+
+                    <div class="history-content">
+
+                        <span class="small-title">
+                            PRIMEIRO MOMENTO
+                        </span>
+
+                        <h2>
+                            Como era o Justino antes
+                        </h2>
+
+                        <div class="line"></div>
+
+                        <p>
+                            Este registro mostra a escola em um
+                            período anterior, preservando uma
+                            parte importante da memória do
+                            Justino Marcons Rangel.
+                        </p>
+
+                        <p>
+                            A imagem representa um dos momentos
+                            que fazem parte da trajetória da escola.
+                        </p>
+
+                        <div class="number">
+                            01
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
+        </section>
 
-            <div class="history-card reverse">
 
-                <div class="history-image">
-                    <img
-                        src="justino-depois.jpg"
-                        alt="PEI Justino Marcons Rangel depois"
-                    >
+        <!-- DEPOIS -->
+        <section class="history-section current" id="depois">
+
+            <div class="container">
+
+                <div class="history-grid reverse">
+
+                    <div class="history-content">
+
+                        <span class="small-title">
+                            MOMENTO ATUAL
+                        </span>
+
+                        <h2>
+                            Como está o Justino depois
+                        </h2>
+
+                        <div class="line"></div>
+
+                        <p>
+                            Nesta fotografia podemos observar
+                            um momento mais recente da escola,
+                            mostrando uma nova fase de sua história.
+                        </p>
+
+                        <p>
+                            O registro representa a evolução
+                            da fachada e a identidade atual
+                            do ambiente escolar.
+                        </p>
+
+                        <div class="number">
+                            02
+                        </div>
+
+                    </div>
+
+
+                    <div class="history-image">
+
+                        <div class="image-label">
+                            DEPOIS
+                        </div>
+
+                        <img
+                            src="justino-depois.jpg"
+                            alt="PEI Justino Marcons Rangel atualmente"
+                        >
+
+                    </div>
+
                 </div>
 
-                <div class="history-text">
+            </div>
 
-                    <span class="history-label">
-                        DEPOIS
-                    </span>
+        </section>
 
-                    <h3>
-                        Uma nova etapa
-                    </h3>
+
+        <!-- COMPARAÇÃO -->
+        <section class="comparison">
+
+            <div class="container">
+
+                <div class="section-heading light">
+
+                    <span>TRANSFORMAÇÃO</span>
+
+                    <h2>
+                        Antes e depois
+                    </h2>
 
                     <p>
-                        Esta imagem apresenta um momento
-                        mais recente da escola e mostra
-                        uma nova fase do Justino Marcons Rangel.
+                        Dois registros, dois momentos e uma
+                        mesma escola fazendo parte da história.
                     </p>
 
                 </div>
 
+
+                <div class="comparison-grid">
+
+                    <div class="comparison-card">
+
+                        <div class="comparison-header">
+                            <span>01</span>
+                            <strong>ANTES</strong>
+                        </div>
+
+                        <div class="comparison-image">
+                            <img
+                                src="justino-antes.jpg"
+                                alt="Antes"
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <div class="comparison-card">
+
+                        <div class="comparison-header">
+                            <span>02</span>
+                            <strong>DEPOIS</strong>
+                        </div>
+
+                        <div class="comparison-image">
+                            <img
+                                src="justino-depois.jpg"
+                                alt="Depois"
+                            >
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
-        </div>
-
-    </section>
+        </section>
 
 
-    <!-- ANTES E DEPOIS -->
-    <section class="comparison">
+        <!-- FINAL -->
+        <section class="final-section">
 
-        <div class="container">
-
-            <div class="section-title white">
+            <div class="container">
 
                 <span>
-                    Transformação
+                    PEI JUSTINO MARCONS RANGEL
                 </span>
 
                 <h2>
-                    Antes e depois
+                    Uma história que continua sendo construída.
                 </h2>
 
                 <p>
-                    Dois registros de diferentes momentos
-                    da história da escola.
+                    Conheça também os projetos, a estrutura
+                    e outras informações da escola.
                 </p>
 
-            </div>
-
-
-            <div class="comparison-grid">
-
-                <div class="comparison-card">
-
-                    <div class="comparison-title">
-                        <span>ANTES</span>
-                    </div>
-
-                    <img
-                        src="justino-antes.jpg"
-                        alt="Justino Marcons Rangel antes"
-                    >
-
-                </div>
-
-
-                <div class="comparison-card">
-
-                    <div class="comparison-title">
-                        <span>DEPOIS</span>
-                    </div>
-
-                    <img
-                        src="justino-depois.jpg"
-                        alt="Justino Marcons Rangel depois"
-                    >
-
-                </div>
+                <a href="escola.html" class="final-button">
+                    Voltar para a página inicial
+                </a>
 
             </div>
 
-        </div>
+        </section>
 
-    </section>
-
-
-    <!-- VOLTAR -->
-    <section class="back-section">
-
-        <div class="container">
-
-            <h2>
-                Quer conhecer mais sobre a escola?
-            </h2>
-
-            <p>
-                Volte para a página principal e
-                conheça nossos projetos e nossa estrutura.
-            </p>
-
-            <a href="escola.html" class="btn-primary">
-                Voltar para o início
-            </a>
-
-        </div>
-
-    </section>
+    </main>
 
 
     <!-- RODAPÉ -->
@@ -294,8 +349,7 @@
     </footer>
 
 
-    <script src="historia.js"></script>
+    <script src="escola.js"></script>
 
 </body>
-
 </html>
